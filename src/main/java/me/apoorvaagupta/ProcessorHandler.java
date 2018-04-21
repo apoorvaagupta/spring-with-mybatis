@@ -7,13 +7,13 @@ import javax.annotation.Resource;
 
 
 @Component
-public class ProcessorHandler {
+public class ProcessorHandler<T> {
 
     @Resource
-    private Processor<String> additionProcessor;
+    private Processor<T> additionProcessor;
 
     @Resource
-    private Processor<String> reversalProcessor;
+    private Processor<T> reversalProcessor;
 
 
     public<T> T process(int option , T ... v) {
