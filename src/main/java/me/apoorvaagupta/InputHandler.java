@@ -3,23 +3,23 @@ package me.apoorvaagupta;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InputHandler {
+public class InputHandler<T> {
 
-    private Reader<String> consoleReader;
-    private Reader<String> fileReader;
-    private Reader<String> databaseReader;
+    private Reader<T> consoleReader;
+    private Reader<T> fileReader;
+    private Reader<T> databaseReader;
 
-    public <T> T takeInput(int option) {
+    public <T> T takeInput(int option, int type) {
 
         switch (option) {
             case 1:
-                return (T)(this.consoleReader.input());
+                return (T)(this.consoleReader.input(type));
             case 2:
-                return (T)(this.fileReader.input());
+                return (T)(this.fileReader.input(type));
             case 3:
-                return (T)(this.databaseReader.input());
+                return (T)(this.databaseReader.input(type));
             default:
-                return (T)(this.consoleReader.input());
+                return (T)(this.consoleReader.input(type));
 
         }
 
