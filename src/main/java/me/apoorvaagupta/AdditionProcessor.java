@@ -2,20 +2,22 @@ package me.apoorvaagupta;
 
 import org.springframework.stereotype.Component;
 
-@Component("additionProcessor")
-public class AdditionProcessor <T> implements Processor<T> {
+import java.util.ArrayList;
 
-    public <T> T process(T ... v) {
+@Component("additionProcessor")
+public class AdditionProcessor<T> implements Processor<T> {
+
+    public <T> T process(ArrayList<T> v) {
 
         T sum;
 
-        if(v[0].getClass() == String.class)
+        if (v.get(0) instanceof String)
             sum = (T) "";
         else
             sum = (T) new Integer(0);
 
-        for (T i: v) {
-            if (v[0].getClass() == Integer.class) {
+        for (T i : v) {
+            if (v.get(0) instanceof Integer) {
                 sum = (T) new Integer((Integer) sum + (Integer) i);
             } else {
                 sum = (T) ((String) sum + (String) i);

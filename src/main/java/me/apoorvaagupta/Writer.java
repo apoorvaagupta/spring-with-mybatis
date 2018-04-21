@@ -1,7 +1,10 @@
 package me.apoorvaagupta;
 
-public interface Writer <T> {
+import java.io.IOException;
+import java.util.ArrayList;
 
-    public void output(T var);
+public interface Writer<T> {
+
+    public void output(T... v) throws IOException;
 
 }

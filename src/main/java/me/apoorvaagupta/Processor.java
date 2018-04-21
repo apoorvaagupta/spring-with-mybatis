@@ -1,6 +1,8 @@
 package me.apoorvaagupta;
 
-public interface Processor <T> {
+import java.util.ArrayList;
 
-    public <T> T process(T ... v);
+public interface Processor<T> {
+
+    public <T> T process(ArrayList<T> v);
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 
 @Component
@@ -16,14 +17,14 @@ public class ProcessorHandler<T> {
     private Processor<T> reversalProcessor;
 
 
-    public<T> T process(int option , T ... v) {
+    public <T> T process(int option, ArrayList<T> v) {
         switch (option) {
             case 1:
-                return (T)(this.additionProcessor.process(v));
+                return (T) (this.additionProcessor.process(v));
             case 2:
-                return (T)(this.reversalProcessor.process(v));
+                return (T) (this.reversalProcessor.process(v));
             default:
-                return (T)(this.additionProcessor.process(v));
+                return (T) (this.additionProcessor.process(v));
 
         }
     }

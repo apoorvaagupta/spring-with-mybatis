@@ -2,24 +2,35 @@ package me.apoorvaagupta;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+import java.io.IOException;
+
 @Component
-public class OutputHandler {
+public class OutputHandler<T> {
 
-    private Writer<String> consoleWriter;
-    private Writer<String> fileWriter;
-    private Writer<String> databaseWriter;
+    @Resource
+    private Writer<T> consoleWriter;
 
-    public<T> void writeOutput(int option, T var) {
+    @Resource
+    private Writer<T> fileWriterCustom;
+
+    @Resource
+    private Writer<T> databaseWriter;
+
+    public void writeOutput(int option, T ... v) throws IOException {
 
         switch (option) {
             case 1:
-                this.consoleWriter.output((String) var);
+                this.consoleWriter.output(v);
+                break;
             case 2:
-                this.fileWriter.output((String) var);
+                this.fileWriterCustom.output(v);
+                break;
             case 3:
-                this.databaseWriter .output((String) var);
+                this.databaseWriter.output(v);
+                break;
             default:
-                this.consoleWriter.output((String) var);
+                this.consoleWriter.output(v);
 
         }
 

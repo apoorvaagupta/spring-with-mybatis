@@ -2,24 +2,33 @@ package me.apoorvaagupta;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.ArrayList;
+
 @Component
 public class InputHandler<T> {
 
+    @Resource
     private Reader<T> consoleReader;
+
+    @Resource
     private Reader<T> fileReader;
+
+    @Resource
     private Reader<T> databaseReader;
 
-    public <T> T takeInput(int option, int type) {
+    public <T> ArrayList<T> takeInput(int option, int type) throws IOException {
 
         switch (option) {
             case 1:
-                return (T)(this.consoleReader.input(type));
+                return this.consoleReader.input(type);
             case 2:
-                return (T)(this.fileReader.input(type));
+                return this.fileReader.input(type);
             case 3:
-                return (T)(this.databaseReader.input(type));
+                return this.databaseReader.input(type);
             default:
-                return (T)(this.consoleReader.input(type));
+                return this.consoleReader.input(type);
 
         }
 

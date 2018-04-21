@@ -1,7 +1,10 @@
 package me.apoorvaagupta;
 
-public interface Reader <T> {
+import java.io.IOException;
+import java.util.ArrayList;
 
-    public <T> T input(int type);
+public interface Reader<T> {
+
+    public <T> ArrayList<T> input(int type) throws IOException;
 
 }
